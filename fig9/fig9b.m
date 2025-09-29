@@ -1,4 +1,4 @@
-%2个解的情�?:fig8a (2kpi)
+%
 clear all
 clc;
 N=6; tau=1; 
@@ -70,31 +70,31 @@ for j=1:length(Cx)-1
    DeltaCx = DeltaCx + N*(Gamma)/2*Cx(j);  
    Cx(j+1)=Cx(j)+DeltaCx*deltat;                                           %b(t+deltat)=b(t)+Deltab*deltat
    Ce(j+1)=Ce(j)+DeltaCe*deltat;
-end                                                                        %模拟β的数�?
+end                                                                        %
 
-for i=1:length(tlist)                                                      %纵坐标时间变化的for循环
-    t=tlist(i);                                                            %某一时刻
-for k=1:length(X)                                                          %横坐标位置变化的for循环
-    sum1=0;                                                                %|X-Xm|求和项�?�和
-    sum2=0;                                                                %(X+Xm)求和项�?�和
-for m=1:N                                                                  %求和项中每一项的循环
-    xm=x(m);                                                               %第m个�?�合�?
-    index1=t*tstep-abs(X(k)-xm)*tstep/v;                                   %求和项中Beta数组索引
+for i=1:length(tlist)                                                      %
+    t=tlist(i);                                                            %
+for k=1:length(X)                                                          %
+    sum1=0;                                                                %
+    sum2=0;                                                                %
+for m=1:N                                                                  %
+    xm=x(m);                                                               %
+    index1=t*tstep-abs(X(k)-xm)*tstep/v;                                   %
     index2=t*tstep-(X(k)+xm)*tstep/v; 
     HH1=exp(1i*omegal/2*abs(X(k)-xm)/v);HH2=exp(1i*omegal/2*(X(k)+xm)/v);
     if index1>0                                                           
-        a1=fix(index1)+1;                                                  %索引取整�?+1                                                 
-        sum1=sum1+Cx(a1)*HH1;                                              %利用循环求和
+        a1=fix(index1)+1;                                                  %                                              
+        sum1=sum1+Cx(a1)*HH1;                                              %
     end
     if index2>0
-        a2=fix(index2)+1;                                                  %索引取整�?+1                                                 
-        sum2=sum2+Cx(a2)*HH2;                                              %利用循环求和
+        a2=fix(index2)+1;                                                  %                                             
+        sum2=sum2+Cx(a2)*HH2;                                              %
     end
 end
-p(i,k)=Gamma/(2*v)*abs(-1i*sum1+1i*sum2)^2;                                %按照横坐标和纵坐标for循环分别向p矩阵填入数据
+p(i,k)=Gamma/(2*v)*abs(-1i*sum1+1i*sum2)^2;                                %
 end
 end
-%变换坐标�?
+%
 %plot(tlist,abs(Cx).^2)
 p2=v*tau*p(1:70:end,:);
 tArray1=tlist(1:70:end);
@@ -113,4 +113,5 @@ set(axes2,'FontName','Times New Roman','FontSize',12,'Layer','top',...
 %pbaspect([4 2.5 1])
 xlabel('$x/x_0$','Interpreter','latex')
 ylabel('$x_0 P(x,t\rightarrow \infty)$','Interpreter','latex')
+
 title('(b)','position',[0.725472698821699,0.327479547695326,0],'FontSize',14);
