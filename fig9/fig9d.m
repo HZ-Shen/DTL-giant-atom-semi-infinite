@@ -1,4 +1,4 @@
-%2ä¸ªè§£çš„æƒ…å†?:fig8b(2kpi)
+%
 clear all
 clc;
 N=6; tau=1; 
@@ -69,31 +69,31 @@ for j=1:length(Cx)-1
    DeltaCx = DeltaCx + N*(Gamma)/2*Cx(j);  
    Cx(j+1)=Cx(j)+DeltaCx*deltat;                                           %b(t+deltat)=b(t)+Deltab*deltat
    Ce(j+1)=Ce(j)+DeltaCe*deltat;
-end                                                                        %æ¨¡æ‹ŸÎ²çš„æ•°ç»?
+end                                                                        %
 
-for i=1:length(tlist)                                                      %çºµåæ ‡æ—¶é—´å˜åŒ–çš„forå¾ªçŽ¯
-    t=tlist(i);                                                            %æŸä¸€æ—¶åˆ»
-for k=1:length(X)                                                          %æ¨ªåæ ‡ä½ç½®å˜åŒ–çš„forå¾ªçŽ¯
-    sum1=0;                                                                %|X-Xm|æ±‚å’Œé¡¹æ?»å’Œ
-    sum2=0;                                                                %(X+Xm)æ±‚å’Œé¡¹æ?»å’Œ
-for m=1:N                                                                  %æ±‚å’Œé¡¹ä¸­æ¯ä¸€é¡¹çš„å¾ªçŽ¯
-    xm=x(m);                                                               %ç¬¬mä¸ªè?¦åˆç‚?
-    index1=t*tstep-abs(X(k)-xm)*tstep/v;                                   %æ±‚å’Œé¡¹ä¸­Betaæ•°ç»„ç´¢å¼•
+for i=1:length(tlist)                                                      %
+    t=tlist(i);                                                            %
+for k=1:length(X)                                                          %
+    sum1=0;                                                                %
+    sum2=0;                                                                %
+for m=1:N                                                                  %
+    xm=x(m);                                                               %
+    index1=t*tstep-abs(X(k)-xm)*tstep/v;                                   %
     index2=t*tstep-(X(k)+xm)*tstep/v; 
     HH1=exp(1i*omegal/2*abs(X(k)-xm)/v);HH2=exp(1i*omegal/2*(X(k)+xm)/v);
     if index1>0                                                           
-        a1=fix(index1)+1;                                                  %ç´¢å¼•å–æ•´æ•?+1                                                 
-        sum1=sum1+Cx(a1)*HH1;                                              %åˆ©ç”¨å¾ªçŽ¯æ±‚å’Œ
+        a1=fix(index1)+1;                                                  %                                               
+        sum1=sum1+Cx(a1)*HH1;                                              %
     end
     if index2>0
-        a2=fix(index2)+1;                                                  %ç´¢å¼•å–æ•´æ•?+1                                                 
-        sum2=sum2+Cx(a2)*HH2;                                              %åˆ©ç”¨å¾ªçŽ¯æ±‚å’Œ
+        a2=fix(index2)+1;                                                  %                                              
+        sum2=sum2+Cx(a2)*HH2;                                              %
     end
 end
-p(i,k)=Gamma/(2*v)*abs(-1i*sum1+1i*sum2)^2;                                %æŒ‰ç…§æ¨ªåæ ‡å’Œçºµåæ ‡forå¾ªçŽ¯åˆ†åˆ«å‘pçŸ©é˜µå¡«å…¥æ•°æ®
+p(i,k)=Gamma/(2*v)*abs(-1i*sum1+1i*sum2)^2;                                %
 end
 end
-%å˜æ¢åæ ‡è½?
+%
 %plot(tlist,abs(Cx).^2)
 p2=v*tau*p(1:70:end,:);
 tArray1=tlist(1:70:end);
@@ -113,3 +113,4 @@ set(axes2,'FontName','Times New Roman','FontSize',12,'Layer','top',...
 xlabel('$x/x_0$','Interpreter','latex')
 ylabel('$x_0 P(x,t\rightarrow \infty)$','Interpreter','latex')
 title('(d)','position',[0.6768,0.330239130434783,0],'FontSize',14);
+
