@@ -3,7 +3,7 @@ clear;
 close all;
 tic;
 
-% 程序中所提到的方程Eq .(8)和Eq .(9)为论文---AX12404孙思杰的论文241224.pdf---里的。
+% 
 
 % parameters setting
 tau_0 = 1;
@@ -35,14 +35,14 @@ t = linspace(0, tf, 1000);
 y = deval(sol, t);
 
 % Calculate the atomic excitation
-Final_x = y(1,:).*conj(y(1,:));   %Cxt的纯数值解
-Final_e = y(2,:).*conj(y(2,:));   %Cet的纯数值解
+Final_x = y(1,:).*conj(y(1,:));   %
+Final_e = y(2,:).*conj(y(2,:));   %
 
 
 
-% 渐进稳态解Cxt
+% 
 eps=zeros(size(t)); 
-omega_j = 6.19176; %对应于论文中的omega_j
+omega_j = 6.19176; %
 s_j = -1i*omega_j;
 cx0 = sqrt(0.8);
 ce0 = sqrt(0.2);
@@ -52,9 +52,9 @@ for i=1:length(t)
 end  
 Final_xeq = eps;
 
-% 渐进稳态解Cet
+% 
 eps=zeros(size(t)); 
-omega_j = 6.19176; %对应于论文中的omega_j
+omega_j = 6.19176; %
 s_j = -1i*omega_j;
 cx0 = sqrt(0.8);
 ce0 = sqrt(0.2);
@@ -99,8 +99,8 @@ toc
 
 
 %%%%%%%%%%%%%%%%%%%%%setting the deday differential equation%%%%%%%%%%%%%
-% 当前延迟微分方程对应于 ---AX12404孙思杰的论文241224.pdf--- 中的Eq. (8)和Eq. (9)，注意加入了相位
-% 如果延迟微分方程变了，只需要理解并修改这部分内容即可继续使用此程序 !!!
+% 
+% 
 function dxdtf = ddefunf(tau_0, Gamma, mu_1, mu_2, G, omega_l, N, alpha)
 
 dxdtf = @ddefun;
@@ -111,8 +111,8 @@ s1 = 0;
 s2 = 0;
 for m = 1:N
     for n = 1:N
-        x = (2*m-2)*N+n;   % x代表了与m-n相关的延迟项在Z这个数组中的位置，这个位置(Z中的第二个指标)与相应的与m-n相关的延迟项所对应的延迟是什么有关
-        y = x+N;           % y代表了与m+n相关的延迟项在Z这个数组中的位置，这个位置(Z中的第二个指标)与相应的与m+n相关的延迟项所对应的延迟是什么有关
+        x = (2*m-2)*N+n;   % 
+        y = x+N;           % 
         t1 = -(Gamma/2).*exp(1i.*(alpha.*n-alpha.*m)).*Z(1,x).*heaviside(t-abs(m-n).*tau_0).*exp(1i.*0.5.*omega_l.*abs(m-n).*tau_0);
         t2 = (Gamma/2).*exp(1i.*(alpha.*n-alpha.*m)).*Z(1,y).*heaviside(t-(m+n).*tau_0).*exp(1i.*0.5.*omega_l.*(m+n).*tau_0);
         s1 = s1+t1;
@@ -129,7 +129,7 @@ end
 
 
 %%%%%%%%%%%%% non constant delay%%%%%%%%%%%%%%%%%%%
-% 如果延迟微分方程变了，只需要理解并修改这部分内容即可继续使用此程序 !!!
+% 如
 function delayf = ddelagsf(tau_0,N)
 
 delayf = @ddelags;
@@ -138,10 +138,10 @@ function delay = ddelags(t,epsilon)
 delay = zeros([1 2*N^3]);
 for m = 1:N
     for n = 1:N
-        x = (2*m-2)*N+n;   % 这里对应在数组Z位置x处的延迟项
-        y = x+N;           % 这里对应在数组Z位置y处的延迟项
-        delay(1,x) = t-abs(m-n)*tau_0;   % 赋值对应于数组Z在位置x处的延迟项的延迟
-        delay(1,y) = t-(m+n)*tau_0;      % 赋值对应于数组Z在位置y处的延迟项的延迟
+        x = (2*m-2)*N+n;   % 
+        y = x+N;           % 
+        delay(1,x) = t-abs(m-n)*tau_0;   % 
+        delay(1,y) = t-(m+n)*tau_0;      % 
     end
 end
 delay = delay';
@@ -150,10 +150,10 @@ end
 end
 
 
-%%%%%%%%%%%Cxt渐进稳态解%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 function result = cxtfun(tau0,N1,G,gamma,omegal,mu1,mu2,alpha,cx0,ce0,s)
-    x1 = (sqrt(-1)*(-1)).*ce0.*G+cx0.*(sqrt(-1).*mu2+s);                      %对应于Eq. 13的分子
-    us1 = sqrt(-1).*mu1+s+(1/2).*gamma.*((-1).*exp(1).^((sqrt(-1)*(-1)).* ... %对应于Eq. 13的分母对s的导数
+    x1 = (sqrt(-1)*(-1)).*ce0.*G+cx0.*(sqrt(-1).*mu2+s);                      %
+    us1 = sqrt(-1).*mu1+s+(1/2).*gamma.*((-1).*exp(1).^((sqrt(-1)*(-1)).* ... %
   alpha.*((-1)+N1)+sqrt(-1).*omegal.*tau0+(-2).*N1.*s.*tau0).*(exp( ...
   1).^(s.*tau0)+(-1).*exp(1).^((sqrt(-1)*(1/2)).*(2.*alpha+omegal.* ...
   tau0))).^(-1).*(exp(1).^(N1.*s.*tau0)+(-1).*exp(1).^((sqrt(-1)*( ...
@@ -279,10 +279,10 @@ function result = cxtfun(tau0,N1,G,gamma,omegal,mu1,mu2,alpha,cx0,ce0,s)
     result = abs(x1./us1)^2;
 end
 
-%%%%%%%%%%%Cet渐进稳态解%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 function result = cetfun(tau0,N1,G,gamma,omegal,mu1,mu2,alpha,cx0,ce0,s)
-    x1 = (sqrt(-1)*(-1)).*cx0.*G+ce0.*(sqrt(-1).*mu1+s+(1/2).*gamma.*((-1) ...  %对应于Eq. 14的分子
-  .*exp(1).^((sqrt(-1)*(-1)).*alpha.*((-1)+N1)+sqrt(-1).*omegal.* ...           %对应于Eq. 14的分母对s的导数
+    x1 = (sqrt(-1)*(-1)).*cx0.*G+ce0.*(sqrt(-1).*mu1+s+(1/2).*gamma.*((-1) ...  %
+  .*exp(1).^((sqrt(-1)*(-1)).*alpha.*((-1)+N1)+sqrt(-1).*omegal.* ...           %
   tau0+(-2).*N1.*s.*tau0).*(exp(1).^(s.*tau0)+(-1).*exp(1).^((sqrt( ...
   -1)*(1/2)).*(2.*alpha+omegal.*tau0))).^(-1).*(exp(1).^(N1.*s.* ...
   tau0)+(-1).*exp(1).^((sqrt(-1)*(1/2)).*N1.*(2.*alpha+omegal.*tau0) ...
@@ -434,3 +434,4 @@ function result = cetfun(tau0,N1,G,gamma,omegal,mu1,mu2,alpha,cx0,ce0,s)
   sqrt(-1).*s.*tau0)));
     result = abs(x1./us1)^2;
 end
+
