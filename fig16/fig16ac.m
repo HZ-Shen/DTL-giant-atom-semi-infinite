@@ -1,5 +1,5 @@
-%% Refer to LiZiye
-%%%Fig2a,c
+%%
+%%%
 clear all
 clc;
 N=3; tau=1;  
@@ -74,7 +74,7 @@ for i=1:length(tlist)
  end 
 Tlist=Gamma*tlist;
 Y1=[abs(Cx).^2;abs(cx).^2];
-% 使用 plot 的矩阵输入创建多行
+% 
 subplot('position',[0.12 0.61 0.366471449487555 0.378846153846154])
 plot1 = plot(Tlist,Y1);
 set(plot1(1),'DisplayName','Eq. (43)','LineWidth',1.5,'Color',[64/255 123/255 208/255]);
@@ -89,18 +89,18 @@ xlabel('$\Gamma t$','Interpreter','latex')
 ylabel('$|C_x(t)|^{2}$','Interpreter','latex')
 %ylim([0 1.05]);
 
-% 设置其余坐标区属性
+% 
 set(gca,'FontName','Times New Roman','FontSize',12,'LineWidth',1);
 pbaspect([4 2.5 1])
 
-% 创建 legend
+% 
 lgd = legend;
 lgd.FontSize = 11;
 lgd.Interpreter = 'latex';
 legend('boxoff');
 title('(a)','position',[6,0.66],'FontSize',14);
 %%%%Ce   
-% 使用 plot 的矩阵输入创建多行
+% 
 Y2=[abs(Ce).^2;abs(ce).^2];
 subplot('position',[0.12 0.16 0.366471449487555 0.378846153846154])
 plot1 = plot(Tlist,Y2);
@@ -113,18 +113,19 @@ xlim([0,100])
 xlabel('$\Gamma t$','Interpreter','latex')
 ylabel('$|C_e(t)|^{2}$','Interpreter','latex')
 
-% 取消以下行的注释以保留坐标区的 X 范围
+% 
  %xlim(axes1,[0 50]);
-% 取消以下行的注释以保留坐标区的 Y 范围
+% 
 % ylim([0 1.05]);
 
-% 设置其余坐标区属性
+% 
 set(gca,'FontName','Times New Roman','FontSize',12,'LineWidth',1);
 pbaspect([4 2.5 1])
-% 创建 legend
+% 
 lgd = legend;
 lgd.FontSize = 11;
 lgd.Interpreter = 'latex';
 legend('boxoff');
 title('(c)','position',[6,0.25],'FontSize',14);
+
 hold on
