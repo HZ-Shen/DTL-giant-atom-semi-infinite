@@ -1,4 +1,4 @@
-%无限波导 case2光场3D
+%
 clear all
 clc;
 N=6; tau=1; 
@@ -111,4 +111,5 @@ ylabel('$\Gamma t$','FontSize',12,'Interpreter','latex')
 zlabel('$x_{0}P(x,t)$','FontSize',12,'Interpreter','latex')
 view([135,25])
 title('(a)','position',[177.5672472045262,-5.810697314560059,0.242981869420901],'FontSize',14);
+
 hold on
