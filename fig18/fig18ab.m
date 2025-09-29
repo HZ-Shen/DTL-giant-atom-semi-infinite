@@ -73,7 +73,7 @@ S_k2=-1i*omegak2;
  end   
 Tlist=Gamma*tlist;
 Y1=[abs(Cx).^2;abs(cx).^2];
-% 使用 plot 的矩阵输入创建多行
+% 
 subplot('position',[0.12 0.61 0.366471449487555 0.3788461538461154])
 
 plot1 = plot(Tlist,Y1);
@@ -89,11 +89,11 @@ xlabel('$\Gamma t$','Interpreter','latex')
 ylabel('$|C_x(t)|^{2}$','Interpreter','latex')
 %ylim([0 1.05]);
 
-% 设置其余坐标区属性
+% 
 set(gca,'FontName','Times New Roman','FontSize',12,'LineWidth',1);
 %pbaspect([4 2.5 1])
 
-% 创建 legend
+% 
 lgd = legend;
 lgd.FontSize = 10;
 %lgd.NumColumns = 2;
@@ -101,7 +101,7 @@ lgd.Interpreter = 'latex';
 legend('boxoff');
 title('(a)','position',[2.5,0.55],'FontSize',14);
 hold on
-% % 创建 axes 放大图
+% 
 % axes2 = axes('Position',[0.09 0.25 0.4 0.55]);
 % hold(axes2,'on');
 % plot1 = plot(Tlist,Y1);
@@ -109,18 +109,18 @@ hold on
 % set(plot1(2),'LineWidth',1.3,...
 %     'LineStyle','-.',...
 %     'Color',[163/255 42/255 49/255]);
-% % 取消以下行的注释以保留坐标区的 X 范围
+% % 
 %  xlim(axes2,[36 40]);
-% % 取消以下行的注释以保留坐标区的 Y 范围
+% % 
 %  ylim(axes2,[0 0.45]);
 % box(axes2,'on');
 % hold(axes2,'off');
-% 设置其余坐标区属性
+% 
 % set(axes2,'FontName','Times New Roman','FontSize',10,'LineWidth',1,...
 %     'PlotBoxAspectRatio',[2 1 1]);
 % hold(axes2,'on');
 %%%%Ce   
-% 使用 plot 的矩阵输入创建多行
+% 
 Y2=[abs(Ce).^2;abs(ce).^2];
 subplot('position',[0.60 0.61 0.366471449487555 0.3788461538461154])
 
@@ -134,15 +134,15 @@ xlim([0,40])
 xlabel('$\Gamma t$','Interpreter','latex')
 ylabel('$|C_e(t)|^{2}$','Interpreter','latex')
 
-% 取消以下行的注释以保留坐标区的 X 范围
+% 
  %xlim(axes1,[0 50]);
-% 取消以下行的注释以保留坐标区的 Y 范围
+% 
 % ylim([0 1.05]);
 
-% 设置其余坐标区属性
+% 
 set(gca,'FontName','Times New Roman','FontSize',12,'LineWidth',1);
 %pbaspect([4 2.5 1])
-% 创建 legend
+% 
 lgd = legend;
 %lgd.NumColumns = 2;
 lgd.FontSize = 10;
@@ -150,7 +150,7 @@ lgd.Interpreter = 'latex';
 legend('boxoff');
 title('(b)','position',[2.5,0.13],'FontSize',14);
 hold on
-% 创建 axes 放大图
+% 
 % axes2 = axes('Position',[0.327994791666665 0.31972251867663 0.0958999999999986 0.1364]);
 % hold(axes2,'on');
 % plot1 = plot(Tlist,Y2);
@@ -158,13 +158,14 @@ hold on
 % set(plot1(2),'LineWidth',1.3,...
 %     'LineStyle','-.',...
 %     'Color',[152/255 245/255 255/255]);
-% % 取消以下行的注释以保留坐标区的 X 范围
+% % 
 %  xlim(axes2,[36 40]);
-% % 取消以下行的注释以保留坐标区的 Y 范围
+% % 
 %  ylim(axes2,[0 0.1]);
 % box(axes2,'on');
 % hold(axes2,'off');
-% % 设置其余坐标区属性
+% % 
 % set(axes2,'FontName','Times New Roman','FontSize',10,'LineWidth',1,...
 %     'PlotBoxAspectRatio',[2 1 1]);
 % hold(axes2,'on');
+
