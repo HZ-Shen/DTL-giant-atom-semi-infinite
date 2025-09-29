@@ -1,5 +1,5 @@
 %% 
-%%%Fig3a,c
+%%%Fig4a,c
 clear all
 clc;
 N=3; tau=1;  
@@ -136,3 +136,4 @@ legend('boxoff');
 title('(d)','position',[6.8,0.49],'FontSize',14);
 
 hold on
+
