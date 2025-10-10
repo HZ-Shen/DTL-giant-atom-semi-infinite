@@ -72,7 +72,7 @@ for m=1:N
     if index1>0                                                           
         a1=fix(index1)+1;                                                                                                
         sum1=sum1+Cx(a1)*HH1;                                              
-    en
+    end
 end
 p(i,k)=Gamma/(2*v)*abs(-1i*sum1)^2;                                
 end
@@ -102,4 +102,5 @@ xlabel('$x/x_{0}$','FontSize',12,'Interpreter','latex')
 ylabel('$\Gamma t$','FontSize',12,'Interpreter','latex')
 zlabel('$v\tau_{0}P(x,t)$','FontSize',12,'Interpreter','latex')
 view([135,25])
+
 hold on
